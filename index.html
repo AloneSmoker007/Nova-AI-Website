@@ -3,158 +3,172 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Nova AI is a production-grade multi-tenant WhatsApp AI SaaS platform for automation, support, lead capture, and AI-powered customer experiences.">
-  <title>Nova AI | Production WhatsApp AI SaaS</title>
+  <meta name="description" content="Nova AI is a premium multi-tenant WhatsApp AI SaaS platform for support automation, lead capture, and AI-powered customer experiences.">
+  <title>Nova AI | Premium WhatsApp AI SaaS</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✦</text></svg>">
   <style>
     :root{
-      --bg:#070d18;
-      --bg-2:#0d1320;
-      --panel:#111b2d;
-      --panel-2:#0f172a;
-      --text:#f3f7ff;
-      --muted:#9aa7bc;
+      --bg:#070c16;
+      --bg-2:#0d1424;
+      --panel:#0e1729;
+      --panel-strong:#101d33;
+      --card:#121f34;
+      --text:#f6f9ff;
+      --muted:#9aa8c1;
       --line:rgba(255,255,255,.08);
       --accent:#8b5cf6;
       --accent-2:#6366f1;
-      --cyan:#22d3ee;
-      --green:#34d399;
-      --yellow:#fbbf24;
-      --max:1180px;
-      --shadow:0 25px 60px rgba(13, 18, 38, 0.5);
+      --cyan:#4dd7ff;
+      --green:#49d89a;
+      --yellow:#ffca5a;
+      --shadow:0 28px 60px rgba(7, 13, 22, .45);
+      --max:1200px;
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,Segoe UI,system-ui,-apple-system,sans-serif;background:radial-gradient(circle at top,#101a30 0%,#070d18 52%);color:var(--text);line-height:1.6}
+    body{margin:0;background:radial-gradient(circle at top, #0b1323 0%, #070c16 46%);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;line-height:1.6}
     a{text-decoration:none;color:inherit}
     img{max-width:100%;display:block}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
     .muted{color:var(--muted)}
-    .gradient-text{
-      background:linear-gradient(135deg,var(--cyan),var(--accent),var(--accent-2));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
+    .gradient-text{background:linear-gradient(135deg,var(--cyan),#91a7ff 30%, var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+    .section{padding:90px 0}
+    .section-head{text-align:center;max-width:760px;margin:0 auto 44px}
+    .kicker{display:inline-block;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(139,92,246,.08);color:#d6cbff;font-size:.75rem;letter-spacing:.14em;font-weight:700;text-transform:uppercase}
+    h1,h2,h3,h4{margin:0;letter-spacing:-.05em;line-height:1.06}
+    h1{font-size:clamp(3rem,5vw,5.5rem);font-weight:800}
+    h2{font-size:clamp(2.2rem,4vw,3.4rem);font-weight:800}
+    h3{font-size:1.45rem}
+    p{margin:0}
 
-    /* NAV */
-    header{
-      position:sticky;top:0;z-index:50;background:rgba(7,13,24,.75);backdrop-filter:blur(12px);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{display:flex;justify-content:space-between;align-items:center;height:74px}
-    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.04em;font-size:1.2rem}
-    .brand-mark{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--accent),var(--cyan));color:#050b16;font-weight:900}
-    .nav-links{display:flex;align-items:center;gap:26px;color:var(--muted);font-size:.96rem}
+    /* HEADER */
+    header{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--line);background:rgba(7,12,22,.65);backdrop-filter:blur(12px)}
+    .nav{height:74px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.2rem;letter-spacing:-.04em}
+    .brand-mark{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--cyan));color:#08111a;font-weight:900}
+    .nav-links{display:flex;gap:28px;color:var(--muted);font-size:.96rem}
     .nav-links a:hover{color:var(--text)}
-    .nav-cta{display:inline-flex;align-items:center;justify-content:center;height:42px;padding:0 18px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--cyan));color:#09121d;font-weight:700;box-shadow:0 12px 28px rgba(139,92,246,.35)}
+    .nav-btn{display:inline-flex;align-items:center;justify-content:center;height:42px;padding:0 18px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--cyan));color:#07111a;font-weight:700}
 
     /* HERO */
-    .hero{padding:96px 0 60px}
-    .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:38px;align-items:center}
-    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:rgba(139,92,246,.08);color:#d8ccff;font-size:.82rem;font-weight:600}
-    .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 18px rgba(52,211,153,.9)}
-    h1{font-size:clamp(2.5rem,5vw,5rem);line-height:1.06;letter-spacing:-.05em;margin:22px 0 20px;font-weight:800}
-    .lead{font-size:1.12rem;color:var(--muted);max-width:620px}
-    .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:30px}
-    .button{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 22px;border-radius:12px;border:1px solid transparent;font-weight:700;transition:.2s ease}
-    .button.primary{background:linear-gradient(135deg,var(--accent),var(--cyan));color:#08111b;box-shadow:0 18px 36px rgba(34,211,238,.2)}
-    .button.primary:hover{transform:translateY(-2px)}
-    .button.secondary{border-color:var(--line);background:rgba(255,255,255,.02);color:var(--text)}
-    .button.secondary:hover{border-color:rgba(34,211,238,.5);background:rgba(34,211,238,.05)}
-    .hero-stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:34px}
-    .mini-stat strong{display:block;font-size:1.5rem;letter-spacing:-.04em}
-    .mini-stat span{color:var(--muted);font-size:.85rem}
+    .hero{padding:94px 0 62px}
+    .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:42px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border:1px solid var(--line);background:rgba(77,215,255,.06);border-radius:999px;margin-bottom:20px;color:#d9f7ff;font-size:.8rem;font-weight:700}
+    .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 18px rgba(73,216,154,.9)}
+    .lead{color:var(--muted);font-size:1.15rem;max-width:620px;margin-top:18px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 24px;border-radius:12px;border:1px solid transparent;font-weight:700;transition:.2s ease}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),var(--cyan));color:#07111a;box-shadow:0 18px 36px rgba(139,92,246,.28)}
+    .btn.primary:hover{transform:translateY(-2px)}
+    .btn.secondary{border-color:var(--line);background:rgba(255,255,255,.02);color:var(--text)}
+    .btn.secondary:hover{border-color:rgba(77,215,255,.5);background:rgba(77,215,255,.05)}
+    .hero-stats{display:flex;gap:30px;flex-wrap:wrap;margin-top:30px}
+    .stat strong{display:block;font-size:1.4rem;letter-spacing:-.04em}
+    .stat span{color:var(--muted);font-size:.8rem}
 
-    .hero-panel{background:linear-gradient(180deg,rgba(17,27,45,.9),rgba(12,18,29,.95));border:1px solid var(--line);border-radius:24px;padding:22px;box-shadow:var(--shadow)}
-    .dashboard-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-    .signal{display:flex;gap:8px;align-items:center;color:var(--muted);font-size:.72rem}
-    .dots{display:flex;gap:6px}
-    .dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2)}
-    .dots span:nth-child(1){background:#ff5f57}.dots span:nth-child(2){background:#febc2e}.dots span:nth-child(3){background:#28c840}
-    .svg-card{background:rgba(5,10,18,.7);border:1px solid var(--line);border-radius:16px;padding:18px}
-    .bars{display:flex;align-items:end;gap:12px;height:120px;margin-top:16px}
-    .bars span{display:block;width:18%;background:linear-gradient(180deg,var(--cyan),var(--accent));border-radius:10px 10px 0 0;opacity:.95}
-    .bars span:nth-child(1){height:32%}.bars span:nth-child(2){height:58%}.bars span:nth-child(3){height:74%}.bars span:nth-child(4){height:90%}.bars span:nth-child(5){height:68%}
-    .metric-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
-    .metric{padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02)}
-    .metric small{display:block;color:var(--muted);font-size:.72rem;margin-bottom:8px}
-    .metric strong{font-size:1.2rem;letter-spacing:-.04em}
+    .dashboard{background:linear-gradient(180deg,rgba(18,31,52,.9),rgba(11,18,32,.98));border:1px solid var(--line);border-radius:26px;padding:20px;box-shadow:var(--shadow)}
+    .dash-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;border-bottom:1px solid var(--line)}
+    .window{display:flex;gap:8px}
+    .window span{display:block;width:10px;height:10px;border-radius:50%}
+    .window span:nth-child(1){background:#ff5f57}.window span:nth-child(2){background:#febc2e}.window span:nth-child(3){background:#28c840}
+    .dash-label{color:var(--muted);font-size:.78rem;padding-left:12px}
+    .dash-body{padding-top:18px}
+    .chart{background:rgba(10,17,30,.8);border:1px solid var(--line);border-radius:16px;padding:18px}
+    .bars{display:flex;align-items:flex-end;gap:12px;height:120px}
+    .bars span{display:block;width:18%;background:linear-gradient(180deg,var(--cyan),var(--accent));border-radius:12px 12px 0 0}
+    .bars span:nth-child(1){height:36%}.bars span:nth-child(2){height:52%}.bars span:nth-child(3){height:68%}.bars span:nth-child(4){height:88%}.bars span:nth-child(5){height:73%}
+    .metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:18px}
+    .metric{padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02)}
+    .metric small{display:block;color:var(--muted);margin-bottom:6px;font-size:.72rem}
+    .metric strong{font-size:1.3rem;letter-spacing:-.04em}
 
-    /* SECTION SHARED */
-    section{padding:86px 0}
-    .section-header{text-align:center;margin:0 auto 42px;max-width:760px}
-    .kicker{display:inline-block;font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;color:var(--cyan);font-weight:700;margin-bottom:12px}
-    h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;letter-spacing:-.05em;margin:0 0 16px;font-weight:800}
-    .section-sub{color:var(--muted);font-size:1.05rem}
+    /* TRUST BAR */
+    .trust{padding:20px 0 0}
+    .logos{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;margin-top:18px}
+    .logo{display:flex;align-items:center;justify-content:center;height:58px;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:12px;color:var(--muted);font-weight:700;letter-spacing:.08em;font-size:.72rem}
 
     /* FEATURES */
     .feature-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-    .card{background:linear-gradient(180deg,rgba(17,27,45,.7),rgba(12,18,29,.9));border:1px solid var(--line);border-radius:20px;padding:28px;box-shadow:0 16px 32px rgba(4,10,20,.22)}
-    .icon{display:inline-flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:14px;background:linear-gradient(135deg,rgba(34,211,238,.15),rgba(139,92,246,.18));color:var(--cyan);font-size:1.4rem;margin-bottom:16px}
-    .card h3{font-size:1.25rem;letter-spacing:-.03em;margin:0 0 12px}
-    .card p{margin:0;color:var(--muted);font-size:.96rem}
+    .card{padding:28px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(17,27,45,.78),rgba(11,17,29,.96));box-shadow:var(--shadow)}
+    .card .icon{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,rgba(77,215,255,.15),rgba(139,92,246,.18));font-size:1.5rem;margin-bottom:18px}
+    .card h3{margin:0 0 12px;letter-spacing:-.04em}
+    .card p{color:var(--muted);font-size:.96rem}
 
-    /* LOGOS */
-    .brand-row{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:18px;margin-top:18px}
-    .brand-pill{display:flex;align-items:center;justify-content:center;height:56px;border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:12px;color:var(--muted);font-weight:700;letter-spacing:.04em}
-
-    /* USE CASES */
-    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+    /* PIPELINE */
+    .pipeline-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center}
     .stack{display:grid;gap:18px}
-    .use-case{display:flex;align-items:flex-start;gap:16px;border:1px solid var(--line);background:rgba(255,255,255,.02);padding:18px 20px;border-radius:16px}
-    .use-badge{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,rgba(34,211,238,.12),rgba(139,92,246,.12));color:var(--cyan);font-weight:800}
-    .use-case h4{margin:0 0 6px;font-size:1.08rem}
-    .use-case p{margin:0;color:var(--muted);font-size:.92rem}
-    .panel{background:linear-gradient(180deg,rgba(17,27,45,.8),rgba(12,18,29,.95));border:1px solid var(--line);border-radius:22px;padding:24px;box-shadow:var(--shadow)}
-    .diagram{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:8px}
-    .node{padding:16px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02);text-align:center}
-    .node strong{display:block;font-size:.9rem;margin-bottom:6px}
-    .node span{color:var(--muted);font-size:.7rem}
+    .step{display:flex;align-items:flex-start;gap:16px;border:1px solid var(--line);background:rgba(255,255,255,.02);padding:18px 18px;border-radius:16px}
+    .step-num{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,rgba(77,215,255,.14),rgba(139,92,246,.16));font-weight:800;color:var(--cyan)}
+    .step h4{margin:0 0 6px;font-size:1.05rem;letter-spacing:-.03em}
+    .step p{color:var(--muted);font-size:.92rem}
+    .panel{padding:24px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(180deg,rgba(18,31,52,.8),rgba(12,18,30,.96));box-shadow:var(--shadow)}
+    .nodes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .node{padding:16px 12px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02);text-align:center}
+    .node strong{display:block;margin-bottom:8px}
+    .node span{font-size:.7rem;color:var(--muted)}
+    .panel-note{margin-top:18px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02);color:var(--muted);line-height:1.7}
+
+    /* COMPARISON */
+    .compare{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .compare-card{padding:28px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.02)}
+    .compare-card h3{margin-bottom:12px;font-size:1.18rem}
+    .compare-card ul{list-style:none;padding:0;margin:0;display:grid;gap:12px;color:var(--muted)}
+    .compare-card li::before{content:"✓";color:var(--green);font-weight:800;margin-right:10px}
+
+    /* TESTIMONIALS */
+    .reviews{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .review{padding:24px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.02)}
+    .stars{letter-spacing:.12em;color:var(--yellow);font-size:1rem;margin-bottom:16px}
+    .review p{color:var(--muted);font-size:.95rem;line-height:1.7}
+    .person{display:flex;align-items:center;gap:12px;margin-top:20px}
+    .avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--cyan));display:flex;align-items:center;justify-content:center;font-weight:800;color:#08111a}
+    .person strong{display:block}
+    .person span{display:block;color:var(--muted);font-size:.8rem}
 
     /* PRICING */
-    .pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-    .price-card{padding:28px 24px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(17,27,45,.8),rgba(12,18,29,.9));position:relative}
-    .price-card.featured{border-color:rgba(34,211,238,.5);box-shadow:0 20px 34px rgba(34,211,238,.12)}
-    .badge-pop{position:absolute;top:-12px;right:18px;padding:6px 10px;background:linear-gradient(135deg,var(--accent),var(--cyan));color:#08111b;border-radius:999px;font-weight:800;font-size:.7rem}
-    .price-card h3{margin:0;font-size:1.5rem;letter-spacing:-.04em}
-    .price{margin:20px 0 10px;font-size:2.4rem;letter-spacing:-.06em;font-weight:800}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+    .price-card{position:relative;padding:28px 24px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(180deg,rgba(17,27,45,.8),rgba(11,17,29,.96));box-shadow:var(--shadow)}
+    .price-card.featured{border-color:rgba(77,215,255,.5);box-shadow:0 24px 50px rgba(77,215,255,.12)}
+    .popular{position:absolute;top:-12px;right:18px;padding:6px 10px;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--cyan));color:#08111a;font-size:.7rem;font-weight:800}
+    .price-card h3{font-size:1.5rem;margin-bottom:10px}
+    .price{font-size:2.5rem;letter-spacing:-.06em;font-weight:800;margin:18px 0 10px}
     .price small{font-size:1rem;color:var(--muted)}
-    .list{list-style:none;padding:0;margin:22px 0 24px;display:grid;gap:10px;color:var(--muted)}
-    .list li::before{content:"✓";color:var(--green);font-weight:800;margin-right:10px}
+    .price-card ul{list-style:none;padding:0;margin:20px 0 28px;display:grid;gap:10px;color:var(--muted)}
+    .price-card li::before{content:"✓";color:var(--green);margin-right:10px;font-weight:800}
 
     /* FAQ */
-    .faq{max-width:820px;margin:0 auto;display:grid;gap:14px}
-    .faq-item{background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
-    .faq-q{display:flex;justify-content:space-between;gap:16px;align-items:center;font-weight:700;cursor:pointer}
-    .faq-a{margin-top:10px;color:var(--muted);display:none;line-height:1.7}
-    .faq-item.open .faq-a{display:block}
-    .faq-item.open .faq-q span:last-child{transform:rotate(180deg)}
+    .faq{max-width:830px;margin:0 auto;display:grid;gap:14px}
+    .faq-item{padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02)}
+    .faq-head{display:flex;justify-content:space-between;align-items:center;gap:18px;cursor:pointer;font-weight:700}
+    .faq-body{display:none;color:var(--muted);padding-top:12px;line-height:1.7;font-size:.95rem}
+    .faq-item.open .faq-body{display:block}
+    .faq-item.open .faq-head span:last-child{transform:rotate(180deg)}
 
     /* CTA */
-    .cta{padding:26px 30px;background:linear-gradient(135deg,rgba(139,92,246,.15),rgba(34,211,238,.08));border:1px solid var(--line);border-radius:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px}
-    .cta h3{margin:0 0 8px;font-size:2rem;letter-spacing:-.04em}
-    .cta p{margin:0;color:var(--muted)}
+    .cta-wrap{padding:26px 28px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(135deg,rgba(139,92,246,.14),rgba(77,215,255,.08));box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;gap:22px;flex-wrap:wrap}
+    .cta-wrap h3{font-size:2rem;letter-spacing:-.05em}
+    .cta-wrap p{color:var(--muted)}
+    .cta-mail{display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 20px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--cyan));color:#08111a;font-weight:800}
 
     /* FOOTER */
-    footer{padding:50px 0 30px;border-top:1px solid var(--line);margin-top:90px}
-    .footer-grid{display:grid;grid-template-columns:1.3fr repeat(3,1fr);gap:28px}
-    .footer-col h4{margin:0 0 14px;font-size:.88rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}
+    footer{padding:44px 0 30px;border-top:1px solid var(--line);margin-top:74px}
+    .footer-grid{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:28px}
+    .footer-col h4{margin:0 0 14px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-size:.76rem}
     .footer-col a{display:block;padding:6px 0;color:var(--muted)}
     .footer-col a:hover{color:var(--text)}
-    .copy{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:22px;margin-top:24px;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}
+    .copy{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:22px;margin-top:24px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
 
     @media (max-width: 980px){
-      .hero-inner,.two-col,.footer-grid,.feature-grid,.pricing-grid{grid-template-columns:1fr}
+      .hero-grid, .pipeline-grid, .feature-grid, .pricing-grid, .compare, .reviews, .footer-grid{grid-template-columns:1fr}
       .nav-links{display:none}
-      .brand-row{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .logos{grid-template-columns:repeat(3,1fr)}
     }
     @media (max-width: 620px){
-      h1{font-size:2.8rem}
-      .hero-actions,.cta{flex-direction:column;align-items:flex-start}
-      .button{width:100%}
-      .brand-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .hero-actions, .cta-wrap{flex-direction:column;align-items:flex-start}
+      .btn, .cta-mail{width:100%}
+      .logos{grid-template-columns:repeat(2,1fr)}
       .copy{flex-direction:column;align-items:flex-start}
+      .metrics, .nodes{grid-template-columns:1fr 1fr}
     }
   </style>
 </head>
@@ -166,309 +180,338 @@
         <a href="#features">Features</a>
         <a href="#platform">Platform</a>
         <a href="#pricing">Pricing</a>
-        <a href="#faq">FAQ</a>
+        <a href="#reviews">Reviews</a>
         <a href="privacy.html">Privacy</a>
       </nav>
-      <a href="#contact" class="nav-cta">Book demo</a>
+      <a href="#contact" class="nav-btn">Book demo</a>
     </div>
   </header>
 
   <main id="top">
     <section class="hero">
-      <div class="wrap hero-inner">
+      <div class="wrap hero-grid">
         <div>
           <div class="eyebrow">Production WhatsApp AI SaaS</div>
-          <h1>Turn every WhatsApp conversation into a <span class="gradient-text">scale-ready business system.</span></h1>
-          <p class="lead">Nova AI is a multi-tenant WhatsApp automation platform built for modern businesses that want faster support, smarter lead capture, structured workflows, and AI-powered customer experiences without losing control.</p>
+          <h1>Scale every customer conversation with <span class="gradient-text">AI that feels human.</span></h1>
+          <p class="lead">Nova AI is a secure, multi-tenant WhatsApp automation platform for support teams, sales teams, and service businesses who need reliable AI-driven conversations without sacrificing trust or control.</p>
           <div class="hero-actions">
-            <a href="#contact" class="button primary">Book a demo</a>
-            <a href="#features" class="button secondary">Explore platform</a>
+            <a href="#contact" class="btn primary">Book a demo</a>
+            <a href="#features" class="btn secondary">Explore platform</a>
           </div>
           <div class="hero-stats">
-            <div class="mini-stat"><strong>50%</strong><span>faster response time</span></div>
-            <div class="mini-stat"><strong>24/7</strong><span>AI support coverage</span></div>
-            <div class="mini-stat"><strong>Multi-tenant</strong><span>secure by design</span></div>
+            <div class="stat"><strong>50%</strong><span>faster response</span></div>
+            <div class="stat"><strong>24/7</strong><span>AI coverage</span></div>
+            <div class="stat"><strong>3x</strong><span>support throughput</span></div>
           </div>
         </div>
 
-        <div class="hero-panel">
-          <div class="dashboard-top">
+        <div class="dashboard">
+          <div class="dash-top">
             <strong>Nova AI Control Center</strong>
-            <div class="signal"><div class="dots"><span></span><span></span><span></span></div> Live</div>
+            <div class="dash-label">Live • Secure</div>
           </div>
-
-          <div class="svg-card">
-            <div style="display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:.75rem">
-              <span>Conversation volume</span>
-              <span>+18.4%</span>
+          <div class="dash-body">
+            <div class="chart">
+              <div class="bars">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
             </div>
-            <div class="bars">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-          </div>
-
-          <div class="metric-row">
-            <div class="metric">
-              <small>Active automations</small>
-              <strong>1,284</strong>
-            </div>
-            <div class="metric">
-              <small>Handoff rate</small>
-              <strong>14.2%</strong>
-            </div>
-            <div class="metric">
-              <small>Usage quota</small>
-              <strong>92%</strong>
-            </div>
-            <div class="metric">
-              <small>AI accuracy</small>
-              <strong>96.4%</strong>
+            <div class="metrics">
+              <div class="metric"><small>Active automations</small><strong>1,284</strong></div>
+              <div class="metric"><small>AI handoff rate</small><strong>14.2%</strong></div>
+              <div class="metric"><small>Usage quota</small><strong>92%</strong></div>
+              <div class="metric"><small>Accuracy</small><strong>96.4%</strong></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="wrap">
-      <div class="section-header">
-        <span class="kicker">Built for real businesses</span>
-        <h2>From WhatsApp inbox to AI workflow engine</h2>
-        <p class="section-sub">Nova AI combines secure WhatsApp infrastructure, durable message processing, tenant-aware AI memory, and human escalation into a single operational platform.</p>
+    <div class="trust wrap">
+      <div class="section-head" style="margin-bottom:20px">
+        <span class="kicker">Trusted by modern teams</span>
       </div>
-
-      <div class="brand-row">
-        <div class="brand-pill">E-COMMERCE</div>
-        <div class="brand-pill">SAAS</div>
-        <div class="brand-pill">AGENCIES</div>
-        <div class="brand-pill">SUPPORT</div>
-        <div class="brand-pill">FINANCE</div>
-        <div class="brand-pill">HEALTH</div>
+      <div class="logos">
+        <div class="logo">E-COM</div>
+        <div class="logo">SAAS</div>
+        <div class="logo">SUPPORT</div>
+        <div class="logo">AGENCY</div>
+        <div class="logo">FINANCE</div>
+        <div class="logo">HEALTH</div>
       </div>
-    </section>
+    </div>
 
-    <section id="features">
+    <section id="features" class="section">
       <div class="wrap">
-        <div class="section-header">
+        <div class="section-head">
           <span class="kicker">Core capabilities</span>
-          <h2>Everything modern WhatsApp teams need</h2>
+          <h2>Purpose-built for production customer operations</h2>
         </div>
 
         <div class="feature-grid">
           <article class="card">
             <div class="icon">✦</div>
-            <h3>Multi-tenant architecture</h3>
-            <p>Secure, isolated tenant data with scoped authorization and role-aware access so each business keeps its own conversations, AI memory, and usage data separate.</p>
+            <h3>Multi-tenant safety</h3>
+            <p>Business-level isolation, scope-aware authorization, and tenant-safe data handling built directly into the platform.</p>
           </article>
 
           <article class="card">
             <div class="icon">⚡</div>
-            <h3>Durable webhook inbox</h3>
-            <p>Reliable message ingestion with idempotency, recovery, retries, and durable delivery tracking so every incoming message is processed safely.</p>
+            <h3>Durable inbox</h3>
+            <p>Incoming messages are processed with idempotency, retries, and durable delivery tracking so nothing is lost in the flow.</p>
           </article>
 
           <article class="card">
             <div class="icon">🧠</div>
-            <h3>Business Brain + AI memory</h3>
-            <p>Use business context, customer signals, and conversation memory to deliver highly relevant responses grounded in your real operations.</p>
-          </article>
-
-          <article class="card">
-            <div class="icon">🛡️</div>
-            <h3>Encrypted credentials</h3>
-            <p>Protect WhatsApp credentials with AES-256-GCM encryption while maintaining production-grade secret handling and operational safety.</p>
+            <h3>Business Brain AI</h3>
+            <p>Use business context, knowledge, and customer-specific memory to serve smarter, more contextual responses every time.</p>
           </article>
 
           <article class="card">
             <div class="icon">🤝</div>
-            <h3>Human handoff & AI co-pilot</h3>
-            <p>Escalate complex requests to agents with routing, summaries, and AI-assisted drafts so customer experience stays high-value and fast.</p>
+            <h3>Human handoff</h3>
+            <p>Escalate complex conversations with full context, AI-generated summaries, and handoff-ready agent workflows.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🔒</div>
+            <h3>Encrypted credentials</h3>
+            <p>Protect WhatsApp keys, tokens, and business secrets using encrypted storage and strict operational controls.</p>
           </article>
 
           <article class="card">
             <div class="icon">📊</div>
-            <h3>Usage metering & limits</h3>
-            <p>Track quotas, conversation usage, and account limits in real time so your business can scale predictably without surprises.</p>
+            <h3>Usage metering</h3>
+            <p>Track limits, usage, response quality, and workflow activity in real time across teams and tenants.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="platform">
+    <section id="platform" class="section">
       <div class="wrap">
-        <div class="section-header">
+        <div class="section-head">
           <span class="kicker">Platform flow</span>
-          <h2>Designed for production-grade automation</h2>
+          <h2>From inbound WhatsApp message to optimized business action</h2>
         </div>
 
-        <div class="two-col">
+        <div class="pipeline-grid">
           <div class="stack">
-            <div class="use-case">
-              <div class="use-badge">01</div>
+            <div class="step">
+              <div class="step-num">01</div>
               <div>
-                <h4>WhatsApp business intake</h4>
-                <p>Capture inbound messages securely through Meta WhatsApp Cloud API with signature validation and durable processing.</p>
+                <h4>Receive</h4>
+                <p>Messages arrive securely via Meta WhatsApp Cloud API and are verified before processing.</p>
               </div>
             </div>
-            <div class="use-case">
-              <div class="use-badge">02</div>
+            <div class="step">
+              <div class="step-num">02</div>
               <div>
-                <h4>AI classification and business context</h4>
-                <p>Route conversations using intent detection, tenant context, and business rules before generating the most helpful response.</p>
+                <h4>Classify</h4>
+                <p>Nova AI routes incoming intent using business rules, customer context, and tenant-aware processing.</p>
               </div>
             </div>
-            <div class="use-case">
-              <div class="use-badge">03</div>
+            <div class="step">
+              <div class="step-num">03</div>
               <div>
-                <h4>Escalation and agent workflows</h4>
-                <p>Trigger human handoff, skill-based routing, or co-pilot drafts whenever a case needs a personal or specialized touch.</p>
+                <h4>Act</h4>
+                <p>Automate replies, qualify leads, create tasks, or escalate to a human agent when needed.</p>
               </div>
             </div>
           </div>
 
           <div class="panel">
-            <div class="diagram">
+            <div class="nodes">
               <div class="node"><strong>Meta</strong><span>WhatsApp</span></div>
-              <div class="node"><strong>Webhook</strong><span>Verification</span></div>
               <div class="node"><strong>Queue</strong><span>Redis / BullMQ</span></div>
-              <div class="node"><strong>Inbox</strong><span>Durable storage</span></div>
               <div class="node"><strong>AI</strong><span>Gemini</span></div>
+              <div class="node"><strong>Inbox</strong><span>Durable storage</span></div>
+              <div class="node"><strong>Business</strong><span>Context</span></div>
               <div class="node"><strong>Agent</strong><span>Handoff</span></div>
             </div>
-            <div style="margin-top:22px;padding:16px 18px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02);color:var(--muted);font-size:.9rem;line-height:1.7">
-              PostgreSQL stores tenant-scoped business data, conversations, message states, usage records, handoff history, and AI memory so the platform remains operational, auditable, and secure.
+            <div class="panel-note">PostgreSQL stores tenant-scoped conversations, usage statistics, security metadata, and workflow state, keeping every business operation isolated and auditable.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Why teams choose Nova</span>
+          <h2>Built to outperform generic chatbots</h2>
+        </div>
+
+        <div class="compare">
+          <div class="compare-card">
+            <h3>Typical chatbot</h3>
+            <ul>
+              <li>Single tenant setup</li>
+              <li>Basic canned replies</li>
+              <li>Weak business memory</li>
+              <li>No operational audit trail</li>
+            </ul>
+          </div>
+
+          <div class="compare-card" style="border-color:rgba(77,215,255,.45)">
+            <h3>Nova AI</h3>
+            <ul>
+              <li>Multi-tenant architecture</li>
+              <li>AI grounded in business context</li>
+              <li>Human handoff workflows</li>
+              <li>Secure production safeguards</li>
+            </ul>
+          </div>
+
+          <div class="compare-card">
+            <h3>For scaling teams</h3>
+            <ul>
+              <li>Usage metering</li>
+              <li>Business workflow automation</li>
+              <li>Operational visibility</li>
+              <li>Shared inbox orchestration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reviews" class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Customer feedback</span>
+          <h2>Teams see results quickly</h2>
+        </div>
+
+        <div class="reviews">
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>“Nova AI helped us convert WhatsApp chat into a real support pipeline. We cut repetitive questions dramatically and gave our team time to focus on real customer value.”</p>
+            <div class="person">
+              <div class="avatar">A</div>
+              <div><strong>Ayesha Q.</strong><span>Operations Lead</span></div>
+            </div>
+          </div>
+
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>“The multi-tenant design was exactly what we needed. Different teams can operate independently while centralizing intelligence and tooling.”</p>
+            <div class="person">
+              <div class="avatar">M</div>
+              <div><strong>Mateen R.</strong><span>Growth Manager</span></div>
+            </div>
+          </div>
+
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <p>“The platform feels enterprise-ready. The workflow, fallback, and handoff logic gave us confidence to scale without risking customer experience.”</p>
+            <div class="person">
+              <div class="avatar">S</div>
+              <div><strong>Sana K.</strong><span>Customer Success</span></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="pricing">
+    <section id="pricing" class="section">
       <div class="wrap">
-        <div class="section-header">
-          <span class="kicker">Simple pricing</span>
+        <div class="section-head">
+          <span class="kicker">Pricing</span>
           <h2>Scale from pilot to enterprise</h2>
         </div>
 
         <div class="pricing-grid">
-          <article class="price-card">
+          <div class="price-card">
             <h3>Starter</h3>
-            <div class="price">$49 <small>/month</small></div>
-            <ul class="list">
-              <li>Single business workspace</li>
+            <div class="price">$49 <small>/mo</small></div>
+            <ul>
+              <li>Single workspace</li>
               <li>Core AI conversations</li>
-              <li>Basic automation rules</li>
+              <li>Basic automations</li>
               <li>Email support</li>
             </ul>
-            <a href="#contact" class="button secondary" style="width:100%">Get started</a>
-          </article>
+            <a href="#contact" class="btn secondary" style="width:100%">Get started</a>
+          </div>
 
-          <article class="price-card featured">
-            <div class="badge-pop">Most popular</div>
+          <div class="price-card featured">
+            <div class="popular">Popular</div>
             <h3>Growth</h3>
-            <div class="price">$199 <small>/month</small></div>
-            <ul class="list">
+            <div class="price">$199 <small>/mo</small></div>
+            <ul>
               <li>Multi-tenant support</li>
               <li>Advanced AI memory</li>
               <li>Human handoff workflows</li>
-              <li>Priority chat support</li>
+              <li>Priority support</li>
             </ul>
-            <a href="#contact" class="button primary" style="width:100%">Book demo</a>
-          </article>
+            <a href="#contact" class="btn primary" style="width:100%">Book demo</a>
+          </div>
 
-          <article class="price-card">
+          <div class="price-card">
             <h3>Enterprise</h3>
             <div class="price">Custom</div>
-            <ul class="list">
+            <ul>
               <li>Private deployment</li>
               <li>Custom integrations</li>
-              <li>Advanced security review</li>
               <li>Dedicated onboarding</li>
+              <li>Security review</li>
             </ul>
-            <a href="#contact" class="button secondary" style="width:100%">Talk to sales</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="wrap">
-        <div class="section-header">
-          <span class="kicker">Built for results</span>
-          <h2>Use cases that actually move business metrics</h2>
-        </div>
-
-        <div class="two-col">
-          <div class="panel">
-            <h3 style="margin-top:0">Support operations</h3>
-            <p class="muted">Automate repetitive support issues and take pressure off your team while preserving a human escalation path for high-value conversations.</p>
-            <div class="stack" style="margin-top:18px">
-              <div class="use-case"><div class="use-badge">A</div><div><h4>Resolve faster</h4><p>Reduce backlog with AI-first response workflows.</p></div></div>
-              <div class="use-case"><div class="use-badge">B</div><div><h4>Focus humans</h4><p>Escalate only the cases that truly need expert attention.</p></div></div>
-            </div>
-          </div>
-
-          <div class="panel">
-            <h3 style="margin-top:0">Sales and acquisition</h3>
-            <p class="muted">Capture leads, qualify intent, and route the hottest opportunities into your sales pipeline without losing context.</p>
-            <div class="stack" style="margin-top:18px">
-              <div class="use-case"><div class="use-badge">C</div><div><h4>Qualify in real time</h4><p>Identify intent and urgency before the first human reply.</p></div></div>
-              <div class="use-case"><div class="use-badge">D</div><div><h4>Track conversion</h4><p>Connect conversations to metrics and business outcomes.</p></div></div>
-            </div>
+            <a href="#contact" class="btn secondary" style="width:100%">Talk to sales</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="faq">
+    <section id="faq" class="section">
       <div class="wrap">
-        <div class="section-header">
+        <div class="section-head">
           <span class="kicker">FAQ</span>
-          <h2>Questions teams ask before launch</h2>
+          <h2>Questions before launch</h2>
         </div>
 
         <div class="faq">
           <div class="faq-item open">
-            <div class="faq-q" onclick="toggleFaq(this.parentElement)">
-              <span>What makes Nova AI different from a simple chatbot?</span>
+            <div class="faq-head" onclick="toggleFaq(this.parentElement)">
+              <span>What makes Nova AI different from a regular chatbot?</span>
               <span>⌄</span>
             </div>
-            <div class="faq-a">Nova AI is built as a production-grade WhatsApp SaaS platform: multi-tenant isolation, durable inbox processing, secure credential handling, AI memory, route-based workflows, and human escalation. It is designed for real business operations, not just canned responses.</div>
+            <div class="faq-body">Nova AI is not a basic script bot. It is built for real production workflows with multi-tenant separation, business context, durable message handling, AI memory, and human escalation paths.</div>
           </div>
 
           <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this.parentElement)">
-              <span>Can it support multiple businesses or departments?</span>
+            <div class="faq-head" onclick="toggleFaq(this.parentElement)">
+              <span>Can it support multiple teams or businesses?</span>
               <span>⌄</span>
             </div>
-            <div class="faq-a">Yes. The architecture is built for multi-tenant operations, where each tenant maintains its own data, customers, usage, workflows, and authorization boundaries.</div>
+            <div class="faq-body">Yes. The platform is designed for multi-tenant operations so each organization or team can function independently without mixing data or permissions.</div>
           </div>
 
           <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this.parentElement)">
-              <span>Does it integrate with existing stacks?</span>
+            <div class="faq-head" onclick="toggleFaq(this.parentElement)">
+              <span>Can agents take over when AI hits a limit?</span>
               <span>⌄</span>
             </div>
-            <div class="faq-a">Nova AI is designed to work with business knowledge, CRM context, and operational systems through APIs, queue-based processing, and workflow automation patterns.</div>
+            <div class="faq-body">Yes. Human handoff is a core feature, with customer context, summaries, and AI drafts to help agents resume smoothly without losing momentum.</div>
           </div>
 
           <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this.parentElement)">
-              <span>Can agents take over handoffs seamlessly?</span>
+            <div class="faq-head" onclick="toggleFaq(this.parentElement)">
+              <span>Does this work for support and sales?</span>
               <span>⌄</span>
             </div>
-            <div class="faq-a">Yes. Handoffs can include summary generation, customer context handover, and AI-generated drafts so agents can resume conversations without repeating the customer journey.</div>
+            <div class="faq-body">Absolutely. Nova AI supports support automation, lead qualification, retention messaging, and repetitive high-volume interactions that benefit from AI-driven consistency.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="wrap">
-      <div class="cta">
+    <section id="contact" class="wrap section" style="padding-top:20px">
+      <div class="cta-wrap">
         <div>
-          <h3>Ready to ship smarter WhatsApp automation?</h3>
-          <p>Launch faster with a platform built for multi-tenant AI operations.</p>
+          <h3>Ready to build smarter conversations?</h3>
+          <p>Launch a premium WhatsApp AI system for your business.</p>
         </div>
-        <a href="mailto:hello@nova-ai.app" class="button primary">hello@nova-ai.app</a>
+        <a href="mailto:hello@nova-ai.app" class="cta-mail">hello@nova-ai.app</a>
       </div>
     </section>
   </main>
@@ -478,7 +521,7 @@
       <div class="footer-grid">
         <div>
           <div class="brand" style="margin-bottom:12px"><span class="brand-mark">✦</span> Nova AI</div>
-          <p class="muted" style="max-width:340px">Production-grade WhatsApp AI SaaS platform for support, sales automation, and multi-tenant business conversations.</p>
+          <p class="muted" style="max-width:340px">Production-grade WhatsApp AI SaaS for support, sales, and customer experience automation.</p>
         </div>
 
         <div class="footer-col">
@@ -498,7 +541,7 @@
         <div class="footer-col">
           <h4>Resources</h4>
           <a href="#faq">FAQ</a>
-          <a href="#contact">Book demo</a>
+          <a href="#reviews">Reviews</a>
           <a href="mailto:hello@nova-ai.app">Support</a>
         </div>
       </div>
