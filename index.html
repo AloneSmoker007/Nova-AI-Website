@@ -11,7 +11,6 @@
       --bg:#070c16;
       --bg-2:#0d1424;
       --panel:#0e1729;
-      --panel-strong:#101d33;
       --card:#121f34;
       --text:#f6f9ff;
       --muted:#9aa8c1;
@@ -81,6 +80,37 @@
     .metric{padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.02)}
     .metric small{display:block;color:var(--muted);margin-bottom:6px;font-size:.72rem}
     .metric strong{font-size:1.3rem;letter-spacing:-.04em}
+
+    /* ROBOT */
+    .robot-wrap{position:relative;display:flex;align-items:center;justify-content:center;min-height:490px}
+    .robot-scene{position:relative;width:360px;height:390px;display:flex;align-items:center;justify-content:center}
+    .orb{position:absolute;inset:18px 24px 0 24px;border-radius:50%;background:radial-gradient(circle at 40% 30%, rgba(77,215,255,.35), rgba(139,92,246,.12) 36%, rgba(7,12,22,0) 68%);filter:blur(8px);animation:pulse 2.6s ease-in-out infinite alternate}
+    @keyframes pulse{0%{transform:scale(.96);opacity:.8}100%{transform:scale(1.05);opacity:1}}
+    .robot{position:relative;width:220px;height:280px;animation:floaty 3s ease-in-out infinite}
+    @keyframes floaty{0%,100%{transform:translateY(0px)}50%{transform:translateY(-10px)}}
+    .robot-body{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);width:170px;height:160px;background:linear-gradient(180deg,#f3f9ff,#dfeafc);border:3px solid rgba(255,255,255,.18);border-radius:30px 30px 26px 26px;box-shadow:0 30px 50px rgba(77,215,255,.18)}
+    .robot-head{position:absolute;left:50%;top:0;transform:translateX(-50%);width:150px;height:120px;background:linear-gradient(180deg,#f6fbff,#eaf1ff);border:3px solid rgba(255,255,255,.16);border-radius:36px;box-shadow:0 28px 40px rgba(139,92,246,.15)}
+    .face{position:absolute;inset:18px 18px 20px 18px;border-radius:24px;background:linear-gradient(180deg,#f7faff,#edf4ff)}
+    .eye-group{position:absolute;left:50%;top:42px;transform:translateX(-50%);display:flex;gap:30px}
+    .eye{position:relative;width:16px;height:22px;border-radius:50%;background:#0c1630;overflow:hidden;animation:blink 4s infinite}
+    @keyframes blink{0%,45%,47%,100%{transform:scaleY(1)}46%{transform:scaleY(.15)}}
+    .eye::after{content:"";position:absolute;left:3px;top:4px;width:6px;height:8px;border-radius:50%;background:#ffffff}
+    .mouth{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);width:54px;height:24px;border:4px solid #0d1830;border-top:none;border-radius:0 0 28px 28px;animation:smile 2s ease-in-out infinite}
+    @keyframes smile{0%,100%{transform:translateX(-50%) scaleY(1)}50%{transform:translateX(-50%) scaleY(1.08)}}
+    .cheek{position:absolute;bottom:28px;width:18px;height:12px;border-radius:50%;background:rgba(255,128,153,.4);filter:blur(1px)}
+    .cheek.left{left:18px}.cheek.right{right:18px}
+    .antenna{position:absolute;left:50%;top:-26px;transform:translateX(-50%);width:8px;height:26px;border-radius:10px;background:#dbe9ff}
+    .antenna::before{content:"";position:absolute;left:50%;top:-12px;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--accent));box-shadow:0 0 24px rgba(77,215,255,.8)}
+    .arm{position:absolute;top:108px;width:14px;height:80px;border-radius:8px;background:linear-gradient(180deg,#eff7ff,#dfeaff)}
+    .arm.left{left:20px;transform:rotate(30deg)}
+    .arm.right{right:20px;transform:rotate(-30deg)}
+    .arm.left::after,.arm.right::after{content:"";position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);width:30px;height:14px;border-radius:12px;background:linear-gradient(180deg,#eaebff,#dfeaff)}
+    .robot-legs{position:absolute;left:50%;bottom:0;transform:translateX(-50%);display:flex;gap:18px}
+    .leg{width:22px;height:54px;border-radius:12px;background:linear-gradient(180deg,#edf5ff,#dfeafe)}
+    .robot-speech{position:absolute;right:-12px;top:56px;padding:13px 16px;border-radius:16px;background:linear-gradient(135deg,rgba(139,92,246,.18),rgba(77,215,255,.12));border:1px solid rgba(77,215,255,.25);color:var(--text);font-weight:700;box-shadow:var(--shadow);animation:bob 2.2s ease-in-out infinite}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    .robot-speech::after{content:"";position:absolute;left:-10px;top:16px;border:8px solid transparent;border-right-color:rgba(77,215,255,.18)}
+    .robot-badge{position:absolute;left:10px;bottom:30px;padding:10px 12px;border-radius:12px;background:rgba(11,17,30,.9);border:1px solid var(--line);font-size:.74rem;color:var(--muted);box-shadow:var(--shadow)}
 
     /* TRUST BAR */
     .trust{padding:20px 0 0}
@@ -162,6 +192,7 @@
       .hero-grid, .pipeline-grid, .feature-grid, .pricing-grid, .compare, .reviews, .footer-grid{grid-template-columns:1fr}
       .nav-links{display:none}
       .logos{grid-template-columns:repeat(3,1fr)}
+      .robot-wrap{min-height:420px}
     }
     @media (max-width: 620px){
       .hero-actions, .cta-wrap{flex-direction:column;align-items:flex-start}
@@ -205,22 +236,31 @@
           </div>
         </div>
 
-        <div class="dashboard">
-          <div class="dash-top">
-            <strong>Nova AI Control Center</strong>
-            <div class="dash-label">Live • Secure</div>
-          </div>
-          <div class="dash-body">
-            <div class="chart">
-              <div class="bars">
-                <span></span><span></span><span></span><span></span><span></span>
+        <div class="robot-wrap">
+          <div class="robot-scene">
+            <div class="orb"></div>
+            <div class="robot-speech">Hi! I’m Nova 👋</div>
+            <div class="robot-badge">AI assistant online</div>
+            <div class="robot">
+              <div class="robot-head">
+                <div class="antenna"></div>
+                <div class="face">
+                  <div class="eye-group">
+                    <div class="eye"></div>
+                    <div class="eye"></div>
+                  </div>
+                  <div class="cheek left"></div>
+                  <div class="cheek right"></div>
+                  <div class="mouth"></div>
+                </div>
               </div>
-            </div>
-            <div class="metrics">
-              <div class="metric"><small>Active automations</small><strong>1,284</strong></div>
-              <div class="metric"><small>AI handoff rate</small><strong>14.2%</strong></div>
-              <div class="metric"><small>Usage quota</small><strong>92%</strong></div>
-              <div class="metric"><small>Accuracy</small><strong>96.4%</strong></div>
+              <div class="arm left"></div>
+              <div class="arm right"></div>
+              <div class="robot-body"></div>
+              <div class="robot-legs">
+                <div class="leg"></div>
+                <div class="leg"></div>
+              </div>
             </div>
           </div>
         </div>
