@@ -72,39 +72,45 @@
     .metric small{display:block;margin-bottom:5px;color:var(--muted);font-size:.72rem}
     .metric strong{font-size:1.28rem;letter-spacing:-.04em}
 
-    .robot-wrap{position:relative;display:flex;align-items:center;justify-content:center;min-height:470px}
-    .robot-scene{position:relative;width:360px;height:390px;display:flex;align-items:center;justify-content:center}
-    .orb{position:absolute;inset:18px 26px 0;background:radial-gradient(circle at 40% 32%, rgba(77,215,255,.32), rgba(139,92,246,.12) 32%, rgba(7,13,24,0) 72%);border-radius:50%;filter:blur(10px)}
-    .robo{position:relative;width:270px;height:330px;animation:floaty 3.3s ease-in-out infinite}
-    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-    .robo-head{position:absolute;left:50%;top:0;transform:translateX(-50%);width:220px;height:140px;background:linear-gradient(180deg,#f7fbff,#ebf2ff);border:3px solid rgba(255,255,255,.18);border-radius:52px 52px 40px 40px;box-shadow:0 18px 30px rgba(13,20,36,.18)}
-    .antenna{position:absolute;left:50%;top:-34px;transform:translateX(-50%);width:8px;height:32px;border-radius:10px;background:#dfeafc}
-    .antenna::before{content:"";position:absolute;left:50%;top:-14px;transform:translateX(-50%);width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--accent));box-shadow:0 0 24px rgba(77,215,255,.9)}
-    .face{position:absolute;inset:18px 18px 18px;border-radius:30px;background:linear-gradient(180deg,#111b2d,#0c1426)}
-    .eyes{position:absolute;left:50%;top:42px;transform:translateX(-50%);display:flex;gap:30px}
-    .eye{position:relative;width:28px;height:28px;background:linear-gradient(180deg,#0c0f17,#171b2b);border:5px solid rgba(255,255,255,.12);border-radius:50%;box-shadow:inset 0 0 0 4px rgba(255,255,255,.04)}
-    .eye::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:18px;height:18px;border-radius:50%;background:linear-gradient(180deg,#8deeff,#4dd7ff);box-shadow:0 0 18px rgba(77,215,255,.75)}
-    .eye::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:7px;height:7px;border-radius:50%;background:#fff}
-    .mouth{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:58px;height:18px;border:4px solid rgba(255,255,255,.26);border-top:none;border-radius:0 0 26px 26px;opacity:.8;animation:smile 2.3s ease-in-out infinite}
-    @keyframes smile{0%,100%{transform:translateX(-50%) scaleY(1)}50%{transform:translateX(-50%) scaleY(1.08)}}
-    .cheek{position:absolute;bottom:18px;width:18px;height:10px;border-radius:50%;background:rgba(255,130,180,.18)}
-    .cheek.left{left:18px}.cheek.right{right:18px}
-    .robo-body{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);width:210px;height:170px;background:linear-gradient(180deg,#f5f9ff,#e6edf9);border:3px solid rgba(255,255,255,.18);border-radius:28px 28px 26px 26px;box-shadow:0 20px 28px rgba(13,20,36,.15)}
-    .robo-body::before{content:"";position:absolute;left:50%;top:18px;transform:translateX(-50%);width:96px;height:96px;border-radius:50%;background:linear-gradient(180deg,#52e0ff,#2ec8ff);box-shadow:inset 0 0 0 10px rgba(255,255,255,.5);}
-    .robo-body::after{content:"";position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:120px;height:8px;border-radius:999px;background:rgba(10,18,32,.12)}
-    .arm{position:absolute;top:120px;width:16px;height:92px;border-radius:10px;background:linear-gradient(180deg,#edf5ff,#dfeafc)}
-    .arm.left{left:18px;transform:rotate(28deg)}
-    .arm.right{right:18px;transform:rotate(-28deg)}
-    .arm::before{content:"";position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);width:36px;height:18px;border-radius:50%;background:linear-gradient(180deg,#edf5ff,#dfeafc)}
-    .arm.left::after,.arm.right::after{content:"";position:absolute;left:50%;bottom:-30px;transform:translateX(-50%);width:28px;height:28px;border-radius:50%;background:linear-gradient(180deg,#4dd7ff,#38c4ff);box-shadow:inset 0 0 0 6px rgba(255,255,255,.25)}
-    .robo-legs{position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);display:flex;gap:24px}
-    .leg{width:24px;height:62px;border-radius:14px;background:linear-gradient(180deg,#edf5ff,#dde9fe);position:relative}
-    .leg::after{content:"";position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);width:40px;height:18px;border-radius:16px;background:linear-gradient(180deg,#edf5ff,#dfeafc);box-shadow:inset 0 0 0 8px rgba(77,215,255,.18)}
+    /* multi-agent */
+    .agent-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .agent-card{position:relative;padding:22px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(160deg,rgba(255,255,255,.035),rgba(255,255,255,.012));transition:transform .25s ease,border-color .25s ease}
+    .agent-card:hover{transform:translateY(-5px);border-color:rgba(77,215,255,.34)}
+    .agent-dot{width:11px;height:11px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px rgba(77,215,255,.85);margin-bottom:14px}
+    .agent-card h3{font-size:1.04rem;margin-bottom:8px;letter-spacing:-.02em}
+    .agent-card p{color:var(--muted);font-size:.88rem;line-height:1.62}
+    .agent-tag{display:inline-block;margin-top:13px;font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(77,215,255,.22);padding:4px 9px;border-radius:999px}
+    .agent-flow{margin-top:24px;display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px;padding:16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02);font-size:.82rem;color:var(--muted)}
+    .agent-flow span{padding:7px 13px;border-radius:999px;background:rgba(77,215,255,.09);border:1px solid rgba(77,215,255,.2);color:#dff9ff;font-weight:600}
+    .agent-flow i{color:var(--cyan);font-style:normal}
+    @media(max-width:900px){.agent-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:620px){.agent-grid{grid-template-columns:1fr}}
 
-    .speech{position:absolute;right:-12px;top:58px;padding:13px 16px;border-radius:16px;background:linear-gradient(135deg,rgba(139,92,246,.18),rgba(77,215,255,.12));border:1px solid rgba(77,215,255,.26);color:var(--text);font-weight:700;box-shadow:var(--shadow);animation:talk 2.2s ease-in-out infinite}
+    .robot-wrap{position:relative;display:flex;align-items:center;justify-content:center;min-height:520px}
+    .robot-scene{position:relative;width:400px;height:440px;display:flex;align-items:center;justify-content:center}
+    .orb{position:absolute;inset:18px 26px 0;background:radial-gradient(circle at 40% 32%, rgba(77,215,255,.32), rgba(139,92,246,.12) 32%, rgba(7,13,24,0) 72%);border-radius:50%;filter:blur(10px)}
+    /* ===== NOVA BOT — white+cyan chibi assistant (SVG) ===== */
+    .robo{position:relative;width:286px;height:390px;animation:floaty 3.3s ease-in-out infinite;filter:drop-shadow(0 22px 34px rgba(8,12,22,.34))}
+    @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .robo svg{width:100%;height:100%;overflow:visible}
+    /* idle life */
+    .nb-eye{animation:nbBlink 5.2s ease-in-out infinite}
+    .nb-eye.r{animation-delay:.06s}
+    @keyframes nbBlink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.12)}}
+    .nb-glow{animation:nbPulse 2.6s ease-in-out infinite}
+    @keyframes nbPulse{0%,100%{opacity:.72}50%{opacity:1}}
+    .nb-antenna{transform-box:fill-box;transform-origin:50% 100%;animation:nbSway 3.8s ease-in-out infinite}
+    .nb-antenna.r{animation-delay:-1.9s}
+    @keyframes nbSway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+    .nb-arm-l{transform-box:fill-box;transform-origin:50% 8%;animation:nbArmL 3.4s ease-in-out infinite}
+    .nb-arm-r{transform-box:fill-box;transform-origin:50% 8%;animation:nbArmR 3.4s ease-in-out infinite}
+    @keyframes nbArmL{0%,100%{transform:rotate(2deg)}50%{transform:rotate(-7deg)}}
+    @keyframes nbArmR{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(7deg)}}
+
+    .speech{position:absolute;left:-26px;top:34px;padding:13px 16px;border-radius:16px;background:linear-gradient(135deg,rgba(139,92,246,.18),rgba(77,215,255,.12));border:1px solid rgba(77,215,255,.26);color:var(--text);font-weight:700;box-shadow:var(--shadow);animation:talk 2.2s ease-in-out infinite;white-space:nowrap}
     @keyframes talk{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-    .speech::after{content:"";position:absolute;left:-10px;top:18px;border:8px solid transparent;border-right-color:rgba(77,215,255,.18)}
-    .badge{position:absolute;left:10px;bottom:34px;padding:10px 12px;border-radius:12px;background:rgba(10,18,30,.9);border:1px solid var(--line);color:var(--muted);font-size:.72rem;box-shadow:var(--shadow)}
+    .speech::after{content:"";position:absolute;right:-10px;top:18px;border:8px solid transparent;border-left-color:rgba(77,215,255,.18)}
+    .badge{position:absolute;right:-18px;bottom:78px;padding:10px 12px;border-radius:12px;background:rgba(10,18,30,.9);border:1px solid var(--line);color:var(--muted);font-size:.72rem;box-shadow:var(--shadow);white-space:nowrap}
 
     .chat-widget{position:fixed;right:26px;bottom:22px;z-index:90;display:flex;align-items:flex-end;gap:12px;font-family:inherit}
     .widget-panel{width:250px;background:rgba(12,18,30,.92);border:1px solid var(--line);border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.35);overflow:hidden;transform:translateY(12px);opacity:0;pointer-events:none;transition:.25s ease}
@@ -122,6 +128,7 @@
     .widget-robot{position:relative;width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,var(--accent),var(--cyan));display:flex;align-items:center;justify-content:center;box-shadow:0 18px 38px rgba(77,215,255,.2);cursor:pointer;animation:floatWidget 3s ease-in-out infinite}
     @keyframes floatWidget{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
     .widget-robot::before{content:"";position:absolute;inset:-8px;border-radius:24px;border:1px solid rgba(77,215,255,.28);opacity:.7}
+    .widget-bot{width:56px;height:72px;filter:drop-shadow(0 4px 10px rgba(77,215,255,.35))}
     .widget-face{position:relative;width:38px;height:28px;border-radius:16px;background:linear-gradient(180deg,#101b2d,#0a1220);border:3px solid rgba(255,255,255,.15)}
     .widget-face::before,.widget-face::after{content:"";position:absolute;top:9px;width:7px;height:7px;border-radius:50%;background:linear-gradient(180deg,#8deeff,#4dd7ff);box-shadow:0 0 12px rgba(77,215,255,.8)}
     .widget-face::before{left:7px}.widget-face::after{right:7px}
@@ -185,6 +192,7 @@
       <a href="#top" class="brand"><span class="brand-mark">✦</span> Nova AI</a>
       <nav class="nav-links">
         <a href="#features">Features</a>
+        <a href="#agents">Agents</a>
         <a href="#platform">Platform</a>
         <a href="#pricing">Pricing</a>
         <a href="#reviews">Reviews</a>
@@ -218,25 +226,117 @@
             <div class="speech">Hi! I’m Nova 👋</div>
             <div class="badge">AI assistant online</div>
             <div class="robo">
-              <div class="robo-head">
-                <div class="antenna"></div>
-                <div class="face">
-                  <div class="eyes">
-                    <div class="eye"></div>
-                    <div class="eye"></div>
-                  </div>
-                  <div class="cheek left"></div>
-                  <div class="cheek right"></div>
-                  <div class="mouth"></div>
-                </div>
-              </div>
-              <div class="arm left"></div>
-              <div class="arm right"></div>
-              <div class="robo-body"></div>
-              <div class="robo-legs">
-                <div class="leg"></div>
-                <div class="leg"></div>
-              </div>
+              <svg viewBox="0 0 220 300" role="img" aria-label="Nova AI assistant robot">
+                <defs>
+                  <linearGradient id="nvBody" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#F0F2F5"/><stop offset="1" stop-color="#D8DCE0"/>
+                  </linearGradient>
+                  <linearGradient id="nvVisor" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#333333"/><stop offset=".38" stop-color="#1A1A1A"/><stop offset="1" stop-color="#0E0E0E"/>
+                  </linearGradient>
+                  <radialGradient id="nvGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0" stop-color="#80F6FF" stop-opacity=".95"/><stop offset=".45" stop-color="#00E5FF" stop-opacity=".45"/><stop offset="1" stop-color="#00E5FF" stop-opacity="0"/>
+                  </radialGradient>
+                  <filter id="nvSoft" x="-70%" y="-70%" width="240%" height="240%">
+                    <feGaussianBlur stdDeviation="3.4"/>
+                  </filter>
+                </defs>
+
+                <!-- antennae -->
+                <g class="nb-antenna">
+                  <path d="M80 40 C74 26 68 18 62 12" stroke="#222222" stroke-width="6" stroke-linecap="round" fill="none"/>
+                  <circle cx="60" cy="10" r="13" fill="url(#nvGlow)" class="nb-glow"/>
+                  <circle cx="60" cy="10" r="6.5" fill="#80F6FF"/>
+                </g>
+                <g class="nb-antenna r">
+                  <path d="M140 40 C146 26 152 18 158 12" stroke="#222222" stroke-width="6" stroke-linecap="round" fill="none"/>
+                  <circle cx="160" cy="10" r="13" fill="url(#nvGlow)" class="nb-glow"/>
+                  <circle cx="160" cy="10" r="6.5" fill="#80F6FF"/>
+                </g>
+
+                <!-- ear ports (3D rings) -->
+                <g>
+                  <circle cx="24" cy="112" r="27" fill="url(#nvBody)"/>
+                  <circle cx="24" cy="112" r="18" fill="#222222"/>
+                  <circle cx="24" cy="112" r="15" fill="url(#nvGlow)" class="nb-glow"/>
+                  <circle cx="24" cy="112" r="8.5" fill="#80F6FF"/>
+                </g>
+                <g>
+                  <circle cx="196" cy="112" r="27" fill="url(#nvBody)"/>
+                  <circle cx="196" cy="112" r="18" fill="#222222"/>
+                  <circle cx="196" cy="112" r="15" fill="url(#nvGlow)" class="nb-glow"/>
+                  <circle cx="196" cy="112" r="8.5" fill="#80F6FF"/>
+                </g>
+
+                <!-- head: oversized sphere (55% of height) -->
+                <ellipse cx="110" cy="100" rx="86" ry="72" fill="url(#nvBody)"/>
+                <ellipse cx="110" cy="100" rx="86" ry="72" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
+
+                <!-- glossy visor -->
+                <rect x="42" y="68" width="136" height="66" rx="33" fill="url(#nvVisor)"/>
+                <ellipse cx="110" cy="80" rx="50" ry="9" fill="#333333" opacity=".55"/>
+
+                <!-- eyes: vertical ovals, neon cyan -->
+                <g class="nb-eye">
+                  <ellipse cx="84" cy="102" rx="21" ry="29" fill="url(#nvGlow)" class="nb-glow"/>
+                  <ellipse cx="84" cy="102" rx="11" ry="18" fill="#80F6FF"/>
+                </g>
+                <g class="nb-eye r">
+                  <ellipse cx="136" cy="102" rx="21" ry="29" fill="url(#nvGlow)" class="nb-glow"/>
+                  <ellipse cx="136" cy="102" rx="11" ry="18" fill="#80F6FF"/>
+                </g>
+
+                <!-- short mechanical neck -->
+                <rect x="92" y="166" width="36" height="18" rx="7" fill="#222222"/>
+
+                <!-- torso: rounded rectangle -->
+                <rect x="49" y="180" width="122" height="66" rx="28" fill="url(#nvBody)"/>
+                <rect x="49" y="180" width="122" height="66" rx="28" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
+
+                <!-- chest light -->
+                <circle cx="110" cy="211" r="17" fill="url(#nvBody)"/>
+                <circle cx="110" cy="211" r="26" fill="url(#nvGlow)" class="nb-glow"/>
+                <circle cx="110" cy="211" r="8" fill="#80F6FF"/>
+
+                <!-- arms -->
+                <g class="nb-arm-l">
+                  <circle cx="46" cy="196" r="11" fill="#80F6FF"/>
+                  <circle cx="46" cy="196" r="18" fill="url(#nvGlow)" class="nb-glow"/>
+                  <rect x="28" y="196" width="21" height="36" rx="10.5" fill="url(#nvBody)"/>
+                  <circle cx="38" cy="236" r="9" fill="#222222"/>
+                  <rect x="28" y="243" width="21" height="27" rx="10.5" fill="url(#nvBody)"/>
+                  <rect x="26" y="268" width="25" height="17" rx="8.5" fill="#222222"/>
+                  <rect x="28" y="282" width="6" height="7" rx="3" fill="#00E5FF"/>
+                  <rect x="35.5" y="283" width="6" height="7" rx="3" fill="#00E5FF"/>
+                  <rect x="43" y="282" width="6" height="7" rx="3" fill="#00E5FF"/>
+                </g>
+                <g class="nb-arm-r">
+                  <circle cx="174" cy="196" r="11" fill="#80F6FF"/>
+                  <circle cx="174" cy="196" r="18" fill="url(#nvGlow)" class="nb-glow"/>
+                  <rect x="171" y="196" width="21" height="36" rx="10.5" fill="url(#nvBody)"/>
+                  <circle cx="182" cy="236" r="9" fill="#222222"/>
+                  <rect x="171" y="243" width="21" height="27" rx="10.5" fill="url(#nvBody)"/>
+                  <rect x="169" y="268" width="25" height="17" rx="8.5" fill="#222222"/>
+                  <rect x="171" y="282" width="6" height="7" rx="3" fill="#00E5FF"/>
+                  <rect x="178.5" y="283" width="6" height="7" rx="3" fill="#00E5FF"/>
+                  <rect x="186" y="282" width="6" height="7" rx="3" fill="#00E5FF"/>
+                </g>
+
+                <!-- legs: short & stubby, wide stance -->
+                <rect x="70" y="242" width="25" height="22" rx="11" fill="url(#nvBody)"/>
+                <circle cx="82" cy="266" r="9" fill="#222222"/>
+                <rect x="71" y="272" width="23" height="16" rx="9" fill="url(#nvBody)"/>
+                <rect x="58" y="284" width="46" height="14" rx="7" fill="url(#nvBody)"/>
+                <rect x="55" y="292" width="52" height="9" rx="4.5" fill="#333333"/>
+                <rect x="58" y="296" width="46" height="3" rx="1.5" fill="#00E5FF" class="nb-glow"/>
+
+                <rect x="125" y="242" width="25" height="22" rx="11" fill="url(#nvBody)"/>
+                <circle cx="137" cy="266" r="9" fill="#222222"/>
+                <rect x="126" y="272" width="23" height="16" rx="9" fill="url(#nvBody)"/>
+                <rect x="116" y="284" width="46" height="14" rx="7" fill="url(#nvBody)"/>
+                <rect x="113" y="292" width="52" height="9" rx="4.5" fill="#333333"/>
+                <rect x="116" y="296" width="46" height="3" rx="1.5" fill="#00E5FF" class="nb-glow"/>
+              </svg>
             </div>
           </div>
         </div>
@@ -286,6 +386,30 @@
             <h3>Built for growth</h3>
             <p>Nova AI is designed as a multi-business SaaS platform rather than a single bot.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MULTI-AGENT ===== -->
+    <section class="section" id="agents">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Multi-agent core</p>
+            <h2>Not one bot. <span class="gradient">A team of specialists.</span></h2>
+            <p class="lead">Nova runs a council of focused agents that plan, check and challenge each other before anything reaches your customer.</p>
+          </div>
+        </div>
+        <div class="agent-grid">
+          <article class="agent-card"><div class="agent-dot"></div><h3>Router Agent</h3><p>Reads intent, language and urgency, then hands the conversation to the right specialist.</p><span class="agent-tag">intent · routing</span></article>
+          <article class="agent-card"><div class="agent-dot"></div><h3>Support Agent</h3><p>Resolves issues with your docs, policies and history — and escalates cleanly when it should.</p><span class="agent-tag">resolution</span></article>
+          <article class="agent-card"><div class="agent-dot"></div><h3>Sales Agent</h3><p>Qualifies leads, captures details and books the next step without sounding like a script.</p><span class="agent-tag">lead capture</span></article>
+          <article class="agent-card"><div class="agent-dot"></div><h3>Quality Agent</h3><p>The critic. Reviews every draft for tone, accuracy and policy before it is sent.</p><span class="agent-tag">review · guardrail</span></article>
+          <article class="agent-card"><div class="agent-dot"></div><h3>Memory Agent</h3><p>Keeps durable context across chats so customers never have to repeat themselves.</p><span class="agent-tag">context</span></article>
+          <article class="agent-card"><div class="agent-dot"></div><h3>Analytics Agent</h3><p>Turns every conversation into signal: topics, sentiment, drop-offs and opportunities.</p><span class="agent-tag">insight</span></article>
+        </div>
+        <div class="agent-flow">
+          <span>Message in</span><i>→</i><span>Router</span><i>→</i><span>Specialist</span><i>→</i><span>Quality check</span><i>→</i><span>Reply out</span>
         </div>
       </div>
     </section>
@@ -476,7 +600,7 @@
     </div>
   </footer>
 
-  <div class="chat-widget open" id="chatWidget">
+  <div class="chat-widget" id="chatWidget">
     <div class="widget-panel">
       <div class="widget-header">
         <strong>Nova AI</strong>
@@ -493,10 +617,24 @@
       </div>
     </div>
     <div class="widget-robot" aria-label="Nova AI assistant" title="Nova AI assistant" onclick="toggleWidget()">
-      <div class="widget-face">
-        <div class="blink"><span></span><span></span></div>
-        <div class="dot-line"><span></span><span></span><span></span></div>
-      </div>
+      <svg class="widget-bot" viewBox="0 0 220 300" role="img" aria-label="Nova AI assistant robot">
+        <defs>
+          <linearGradient id="vBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#F0F2F5"/><stop offset="1" stop-color="#D8DCE0"/></linearGradient>
+          <linearGradient id="vVisor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#333333"/><stop offset=".38" stop-color="#1A1A1A"/><stop offset="1" stop-color="#0E0E0E"/></linearGradient>
+          <radialGradient id="vGlow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#80F6FF" stop-opacity=".95"/><stop offset=".45" stop-color="#00E5FF" stop-opacity=".45"/><stop offset="1" stop-color="#00E5FF" stop-opacity="0"/></radialGradient>
+        </defs>
+        <circle cx="24" cy="112" r="27" fill="url(#vBody)"/><circle cx="24" cy="112" r="18" fill="#222222"/><circle cx="24" cy="112" r="9" fill="#80F6FF"/>
+        <circle cx="196" cy="112" r="27" fill="url(#vBody)"/><circle cx="196" cy="112" r="18" fill="#222222"/><circle cx="196" cy="112" r="9" fill="#80F6FF"/>
+        <ellipse cx="110" cy="100" rx="86" ry="72" fill="url(#vBody)"/>
+        <rect x="42" y="68" width="136" height="66" rx="33" fill="url(#vVisor)"/>
+        <ellipse cx="84" cy="102" rx="21" ry="29" fill="url(#vGlow)"/><ellipse cx="84" cy="102" rx="11" ry="18" fill="#80F6FF"/>
+        <ellipse cx="136" cy="102" rx="21" ry="29" fill="url(#vGlow)"/><ellipse cx="136" cy="102" rx="11" ry="18" fill="#80F6FF"/>
+        <rect x="92" y="166" width="36" height="18" rx="7" fill="#222222"/>
+        <rect x="49" y="180" width="122" height="66" rx="28" fill="url(#vBody)"/>
+        <circle cx="110" cy="211" r="26" fill="url(#vGlow)"/><circle cx="110" cy="211" r="8" fill="#80F6FF"/>
+        <rect x="70" y="242" width="25" height="22" rx="11" fill="url(#vBody)"/><rect x="58" y="284" width="46" height="14" rx="7" fill="url(#vBody)"/><rect x="55" y="292" width="52" height="9" rx="4.5" fill="#333333"/><rect x="58" y="296" width="46" height="3" rx="1.5" fill="#00E5FF"/>
+        <rect x="125" y="242" width="25" height="22" rx="11" fill="url(#vBody)"/><rect x="116" y="284" width="46" height="14" rx="7" fill="url(#vBody)"/><rect x="113" y="292" width="52" height="9" rx="4.5" fill="#333333"/><rect x="116" y="296" width="46" height="3" rx="1.5" fill="#00E5FF"/>
+      </svg>
     </div>
   </div>
 
@@ -543,59 +681,88 @@
     @keyframes eyeGlow   { from { opacity:.7; } to { opacity:1; } }
   </style>
 
-  <!-- WALKING ROBOT SVG -->
-  <svg id="walkingRobot" viewBox="0 0 90 130" xmlns="http://www.w3.org/2000/svg">
+  <!-- WALKING ROBOT SVG (Nova Bot — matches the assistant in the hero) -->
+  <svg id="walkingRobot" viewBox="0 0 220 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Nova AI assistant robot walking">
     <defs>
-      <radialGradient id="bG" cx="50%" cy="40%" r="60%">
-        <stop offset="0%" stop-color="#ffffff"/>
-        <stop offset="100%" stop-color="#c8d8f0"/>
+      <linearGradient id="wBody" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#F0F2F5"/><stop offset="1" stop-color="#D8DCE0"/>
+      </linearGradient>
+      <linearGradient id="wVisor" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#333333"/><stop offset=".38" stop-color="#1A1A1A"/><stop offset="1" stop-color="#0E0E0E"/>
+      </linearGradient>
+      <radialGradient id="wGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0" stop-color="#80F6FF" stop-opacity=".95"/><stop offset=".45" stop-color="#00E5FF" stop-opacity=".45"/><stop offset="1" stop-color="#00E5FF" stop-opacity="0"/>
       </radialGradient>
-      <radialGradient id="eG" cx="40%" cy="35%" r="60%">
-        <stop offset="0%" stop-color="#a0f4ff"/>
-        <stop offset="100%" stop-color="#0be6ff"/>
-      </radialGradient>
-      <filter id="gl"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
     </defs>
+
     <g class="rb-body">
-      <!-- Antenna -->
-      <line x1="45" y1="6" x2="45" y2="16" stroke="#b0c4d8" stroke-width="2.5" stroke-linecap="round"/>
-      <circle class="rb-ab" cx="45" cy="4" r="4" fill="#0be6ff" filter="url(#gl)"/>
-      <!-- Head -->
-      <rect x="20" y="15" width="50" height="38" rx="14" fill="url(#bG)" stroke="#cde4f5" stroke-width="1.5"/>
-      <rect x="24" y="19" width="42" height="28" rx="10" fill="#0a1520"/>
-      <ellipse class="rb-eye" cx="34" cy="33" rx="9" ry="10" fill="url(#eG)" filter="url(#gl)"/>
-      <ellipse class="rb-eye" cx="56" cy="33" rx="9" ry="10" fill="url(#eG)" filter="url(#gl)"/>
-      <ellipse cx="31" cy="29" rx="3" ry="2.5" fill="rgba(255,255,255,0.45)"/>
-      <ellipse cx="53" cy="29" rx="3" ry="2.5" fill="rgba(255,255,255,0.45)"/>
-      <circle cx="19" cy="34" r="7" fill="#e8f4ff" stroke="#0be6ff" stroke-width="2" filter="url(#gl)"/>
-      <circle cx="71" cy="34" r="7" fill="#e8f4ff" stroke="#0be6ff" stroke-width="2" filter="url(#gl)"/>
-      <!-- Neck -->
-      <rect x="38" y="53" width="14" height="8" rx="4" fill="#c8d8ec"/>
-      <!-- Torso -->
-      <rect x="18" y="60" width="54" height="36" rx="14" fill="url(#bG)" stroke="#cde4f5" stroke-width="1.5"/>
-      <circle cx="45" cy="78" r="9" fill="#e0f9ff" stroke="#0be6ff" stroke-width="2.5" filter="url(#gl)"/>
-      <circle cx="22" cy="64" r="3.5" fill="#b0c8e0"/>
-      <circle cx="68" cy="64" r="3.5" fill="#b0c8e0"/>
-      <!-- Arms -->
-      <g class="rb-arm-l">
-        <rect x="4" y="62" width="13" height="28" rx="6.5" fill="url(#bG)" stroke="#cde4f5" stroke-width="1.5"/>
-        <circle cx="10.5" cy="60" r="5" fill="#0be6ff" opacity=".7" filter="url(#gl)"/>
-        <rect x="3" y="88" width="14" height="10" rx="5" fill="#d8eaf8"/>
+      <!-- antennae -->
+      <g class="rb-ab">
+        <path d="M80 40 C74 26 68 18 62 12" stroke="#222222" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <circle cx="60" cy="10" r="13" fill="url(#wGlow)"/><circle cx="60" cy="10" r="6.5" fill="#80F6FF"/>
+        <path d="M140 40 C146 26 152 18 158 12" stroke="#222222" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <circle cx="160" cy="10" r="13" fill="url(#wGlow)"/><circle cx="160" cy="10" r="6.5" fill="#80F6FF"/>
       </g>
-      <g class="rb-arm-r">
-        <rect x="73" y="62" width="13" height="28" rx="6.5" fill="url(#bG)" stroke="#cde4f5" stroke-width="1.5"/>
-        <circle cx="79.5" cy="60" r="5" fill="#0be6ff" opacity=".7" filter="url(#gl)"/>
-        <rect x="73" y="88" width="14" height="10" rx="5" fill="#d8eaf8"/>
-      </g>
-      <!-- Legs -->
-      <g class="rb-leg-l">
-        <rect x="26" y="93" width="15" height="28" rx="7" fill="url(#bG)" stroke="#cde4f5" stroke-width="1.5"/>
-        <rect x="22" y="118" width="20" height="11" rx="5.5" fill="#c8d8ec" stroke="#0be6ff" stroke-width="1.5"/>
-      </g>
-      <g class="rb-leg-r">
-        <rect x="49" y="93" width="15" height="28" rx="7" fill="url(#bG)" stroke="#cde4f5" stroke-width="1.5"/>
-        <rect x="48" y="118" width="20" height="11" rx="5.5" fill="#c8d8ec" stroke="#0be6ff" stroke-width="1.5"/>
-      </g>
+
+      <!-- ear ports -->
+      <circle cx="24" cy="112" r="27" fill="url(#wBody)"/><circle cx="24" cy="112" r="18" fill="#222222"/>
+      <circle cx="24" cy="112" r="15" fill="url(#wGlow)"/><circle cx="24" cy="112" r="8.5" fill="#80F6FF"/>
+      <circle cx="196" cy="112" r="27" fill="url(#wBody)"/><circle cx="196" cy="112" r="18" fill="#222222"/>
+      <circle cx="196" cy="112" r="15" fill="url(#wGlow)"/><circle cx="196" cy="112" r="8.5" fill="#80F6FF"/>
+
+      <!-- head -->
+      <ellipse cx="110" cy="100" rx="86" ry="72" fill="url(#wBody)"/>
+      <ellipse cx="110" cy="100" rx="86" ry="72" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1.5"/>
+      <!-- visor -->
+      <rect x="42" y="68" width="136" height="66" rx="33" fill="url(#wVisor)"/>
+      <ellipse cx="110" cy="80" rx="50" ry="9" fill="#333333" opacity=".55"/>
+      <!-- eyes -->
+      <g class="rb-eye"><ellipse cx="84" cy="102" rx="21" ry="29" fill="url(#wGlow)"/><ellipse cx="84" cy="102" rx="11" ry="18" fill="#80F6FF"/></g>
+      <g class="rb-eye"><ellipse cx="136" cy="102" rx="21" ry="29" fill="url(#wGlow)"/><ellipse cx="136" cy="102" rx="11" ry="18" fill="#80F6FF"/></g>
+
+      <!-- neck + torso -->
+      <rect x="92" y="166" width="36" height="18" rx="7" fill="#222222"/>
+      <rect x="49" y="180" width="122" height="66" rx="28" fill="url(#wBody)"/>
+      <rect x="49" y="180" width="122" height="66" rx="28" fill="none" stroke="rgba(255,255,255,.5)" stroke-width="1.5"/>
+      <!-- chest light -->
+      <circle cx="110" cy="211" r="17" fill="url(#wBody)"/>
+      <circle cx="110" cy="211" r="26" fill="url(#wGlow)"/><circle cx="110" cy="211" r="8" fill="#80F6FF"/>
+    </g>
+
+    <!-- arms (swing while walking) -->
+    <g class="rb-arm-l">
+      <circle cx="46" cy="196" r="11" fill="#80F6FF"/><circle cx="46" cy="196" r="18" fill="url(#wGlow)"/>
+      <rect x="28" y="196" width="21" height="36" rx="10.5" fill="url(#wBody)"/>
+      <circle cx="38" cy="236" r="9" fill="#222222"/>
+      <rect x="28" y="243" width="21" height="27" rx="10.5" fill="url(#wBody)"/>
+      <rect x="26" y="268" width="25" height="17" rx="8.5" fill="#222222"/>
+      <rect x="28" y="282" width="6" height="7" rx="3" fill="#00E5FF"/><rect x="35.5" y="283" width="6" height="7" rx="3" fill="#00E5FF"/><rect x="43" y="282" width="6" height="7" rx="3" fill="#00E5FF"/>
+    </g>
+    <g class="rb-arm-r">
+      <circle cx="174" cy="196" r="11" fill="#80F6FF"/><circle cx="174" cy="196" r="18" fill="url(#wGlow)"/>
+      <rect x="171" y="196" width="21" height="36" rx="10.5" fill="url(#wBody)"/>
+      <circle cx="182" cy="236" r="9" fill="#222222"/>
+      <rect x="171" y="243" width="21" height="27" rx="10.5" fill="url(#wBody)"/>
+      <rect x="169" y="268" width="25" height="17" rx="8.5" fill="#222222"/>
+      <rect x="171" y="282" width="6" height="7" rx="3" fill="#00E5FF"/><rect x="178.5" y="283" width="6" height="7" rx="3" fill="#00E5FF"/><rect x="186" y="282" width="6" height="7" rx="3" fill="#00E5FF"/>
+    </g>
+
+    <!-- legs (swing while walking) -->
+    <g class="rb-leg-l">
+      <rect x="70" y="242" width="25" height="22" rx="11" fill="url(#wBody)"/>
+      <circle cx="82" cy="266" r="9" fill="#222222"/>
+      <rect x="71" y="272" width="23" height="16" rx="9" fill="url(#wBody)"/>
+      <rect x="58" y="284" width="46" height="14" rx="7" fill="url(#wBody)"/>
+      <rect x="55" y="292" width="52" height="9" rx="4.5" fill="#333333"/>
+      <rect x="58" y="296" width="46" height="3" rx="1.5" fill="#00E5FF"/>
+    </g>
+    <g class="rb-leg-r">
+      <rect x="125" y="242" width="25" height="22" rx="11" fill="url(#wBody)"/>
+      <circle cx="137" cy="266" r="9" fill="#222222"/>
+      <rect x="126" y="272" width="23" height="16" rx="9" fill="url(#wBody)"/>
+      <rect x="116" y="284" width="46" height="14" rx="7" fill="url(#wBody)"/>
+      <rect x="113" y="292" width="52" height="9" rx="4.5" fill="#333333"/>
+      <rect x="116" y="296" width="46" height="3" rx="1.5" fill="#00E5FF"/>
     </g>
   </svg>
 
